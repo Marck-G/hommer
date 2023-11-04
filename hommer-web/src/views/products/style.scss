@@ -1,0 +1,222 @@
+.productEdit {
+    padding-bottom: 150pt;
+    
+    .barcode-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .barcode-list{
+        padding: 10pt 4pt;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        @media screen and (max-width: 750px) {
+            flex-direction: column;
+            align-items: initial;
+        }
+        .left{
+            font-size: 1.3rem;
+        }
+        
+    }
+    .kcs-panel-price{
+        background: var(--gray-400);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6pt 20pt;
+        .title{
+            margin-left: 8pt;
+            font-size: 1.3rem;
+        }
+    }
+    .camera {
+        background: var(--primary-500);
+        color: var(--primary-100);
+        cursor: pointer;
+
+        &:hover {
+            background: var(--primary-400);
+        }
+    }
+
+    .viewContainer {
+        width: 80%;
+        margin: 20pt auto;
+    }
+
+    .priceTable {
+        margin-top: 10pt;
+        position: relative;
+        max-height: 20rem;
+        overflow: auto;
+
+    }
+
+    .p-inputgroup {
+        margin-top: 10pt;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+
+        .slices {
+            width: calc(33% - 2.7pt);
+        }
+
+        @media screen and (max-width: 750px) {
+            .slices {
+                width: 100%;
+            }
+        }
+    }
+
+    .slices:first-child {
+        margin-right: 10pt;
+    }
+
+    .cantidad {
+        width: 100%;
+        min-width: 200pt;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .update-btn {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 10pt;
+    }
+
+    .price-dropdown {
+        // display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .p-inputgroup {
+            margin-bottom: 10pt;
+        }
+    }
+
+    .p-datascroller {
+        overflow-y: auto;
+        max-height: 400pt;
+    }
+
+    li {
+        list-style: none;
+        position: inherit;
+    }
+
+    .p-badge{
+        // display: inline-block;
+        border-radius: 10pt;
+        padding: 1pt 6pt;
+    }
+
+    
+
+}
+.barcode-create{
+    display: flex;
+    flex-direction: column;
+    *{
+        margin-bottom: 6pt;
+    }
+}
+.price-input {
+    margin-bottom: 10pt;
+}
+
+.dp-comercios {
+    margin-bottom: 10pt;
+}
+
+.p-dialog-header {
+    display: flex;
+    justify-content: space-between;
+}
+.p-dropdown-items-wrapper{
+    overflow-y: auto;
+}
+
+li.p-dropdown-item {
+    list-style: none !important;
+    cursor: pointer;
+}
+
+.pList {
+    padding-bottom: 50pt;
+
+    .kcs-wrapper {
+        padding: 10pt 3pt;
+        display: flex;
+        cursor: pointer;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 700px) {
+            flex-direction: column;
+            justify-content: initial;
+            align-items: initial;
+        }
+
+        &:hover {
+            background: var(--gray-200);
+        }
+
+        h5 {
+            margin-bottom: 2pt;
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        .kcs-left {
+            @media screen and (max-width: 700px) {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .m-price {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .p-tag {
+            display: block;
+            margin-bottom: 3pt;
+
+            @media screen and (max-width: 700px) {
+                display: inline;
+                margin-right: 4pt;
+            }
+        }
+
+        &>div {
+            @media screen and (max-width: 700px) {
+                margin-bottom: 4pt;
+            }
+        }
+
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10pt 6pt;
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 3;
+        box-shadow: 0 2pt 3pt rgba($color: #000, $alpha: .2);
+    }
+}

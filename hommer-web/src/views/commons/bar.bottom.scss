@@ -1,0 +1,31 @@
+.kcs-bottom-bar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: var(--gray-200);
+    box-shadow: 0 0 10pt var(--gray-300);
+    display: flex;
+    // height: 4.5rem;
+    width: 100vw;
+    overflow: hidden;
+    padding: 0;
+    align-items: center;
+    align-items: center;
+    justify-content: space-between;
+
+    .link{
+        display: block;
+        padding: 12pt 21pt;
+        height: 100%;
+        &:hover{
+            background: var(--primary-500);
+            .pi{
+                color: var(--primary-100);
+            }
+        }
+        .pi{
+            font-size: 1.5rem;
+            color: var(--primary-500);
+        }
+    }
+}

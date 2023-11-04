@@ -1,0 +1,37 @@
+.p-l-wrapper{
+
+    margin-left: 0;
+    padding: 0;
+    cursor: pointer;
+
+    
+    .kcs-item{
+        padding: 10pt 10pt;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        @media screen and (max-width: 800px) {
+            padding: 10pt 0pt;
+        }
+        .kcs-title{
+            font-size: 2rem;
+        }
+        &:hover{
+            background: var(--gray-300);
+        }
+    }
+    li{
+        list-style: none;
+        position: inherit;
+    }
+
+    .p-datascroller{
+       max-width: 100%;
+    }
+
+    .kcs-right{
+        font-size: 1.2rem;
+    }
+    
+}
