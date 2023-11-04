@@ -14,6 +14,9 @@ import { ProductsService } from './products/products.service';
 import { ProductController } from './products/products.controller';
 import { PricesService } from './prices/prices.service';
 import { PricesController } from './prices/prices.controller';
+import { BarcodeService } from './barcode/barcode.service';
+import { BarcodeController } from './barcode/barcode.controller';
+import { Barcode, BarcodeSchema } from './barcode/barcode.model';
 
 @Module({
   imports: [databaseConfig, PassportModule.register({ defaultStrategy: 'local' }),
@@ -21,8 +24,9 @@ import { PricesController } from './prices/prices.controller';
     MongooseModule.forFeature([{ name: Commerce.name, schema: CommerceSchema }]),
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
     MongooseModule.forFeature([{ name: Price.name, schema: PriceSchema }]),
+    MongooseModule.forFeature([{ name: Barcode.name, schema: BarcodeSchema }]),
   ],
-  controllers: [UsersController, CommerceController, ProductController, PricesController],
-  providers: [ UsersService, CommerceService, ProductsService, PricesService],
+  controllers: [UsersController, CommerceController, ProductController, PricesController, BarcodeController],
+  providers: [ UsersService, CommerceService, ProductsService, PricesService, BarcodeService],
 })
 export class AppModule {}

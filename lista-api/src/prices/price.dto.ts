@@ -1,11 +1,11 @@
 // price.dto.ts
-import { IsString, IsNumber, IsISO8601, IsOptional } from 'class-validator';
+import { IsString, IsNumber, IsISO8601, IsOptional, IsBoolean } from 'class-validator';
 
 export class CreatePriceDto {
   @IsString()
   producto: string;
 
-  @IsISO8601()
+  @IsOptional()
   fecha: string;
 
   @IsString()
@@ -14,8 +14,9 @@ export class CreatePriceDto {
   @IsNumber()
   precio: number;
 
-  @IsNumber()
-  descuento: number;
+  @IsOptional()
+  @IsBoolean()
+  descuento: boolean;
 }
 
 export class UpdatePriceDto {
@@ -23,7 +24,6 @@ export class UpdatePriceDto {
   @IsOptional()
   producto: string;
 
-  @IsISO8601()
   @IsOptional()
   fecha: string;
 
@@ -35,7 +35,7 @@ export class UpdatePriceDto {
   @IsOptional()
   precio: number;
 
-  @IsNumber()
+  @IsBoolean()
   @IsOptional()
-  descuento: number;
+  descuento: boolean;
 }

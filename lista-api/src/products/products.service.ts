@@ -9,6 +9,17 @@ import { CreateProductDto, UpdateProductDto } from './product.dto';
 export class ProductsService {
   constructor(@InjectModel(Product.name) private productModel: Model<ProductDocument>) {}
 
+  async findAllWithPagination(skip: number, limit: number): Promise<[Product[], number]> {
+    const commerces = await this.productModel.find()
+        .skip(skip)
+        .limit(limit)
+        .exec();
+
+    const total = await this.productModel.countDocuments().exec();
+
+    return [commerces, total];
+}
+
   async create(createProductDto: CreateProductDto) {
     const newProduct = new this.productModel(createProductDto);
     return newProduct.save();
@@ -28,5 +39,33 @@ export class ProductsService {
 
   async remove(id: string) {
     return this.productModel.findByIdAndRemove(id).exec();
+  }
+
+  async findProductsWithLowestPrice() {
+    const productsWithLowestPrice = await this.productModel.aggregate([
+      {
+        $lookup: {
+          from: 'prices', // Nombre de la colección de precios en la base de datos
+          localField: '_id',
+          foreignField: 'producto',
+          as: 'prices',
+        },
+      },
+      {
+        $unwind: '$prices',
+      },
+      {
+        $group: {
+          _id: '$_id',
+          nombre: { $first: '$nombre' },
+          descripcion: { $first: '$descripcion' },
+          barcode: { $first: '$barcode' },
+          quantity: { $first: '$quantity' },
+          price: { $min: '$prices.precio' },
+        },
+      },
+    ]).exec();
+
+    return productsWithLowestPrice;
   }
 }

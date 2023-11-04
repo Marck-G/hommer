@@ -1,6 +1,6 @@
 // src/commerce/commerce.model.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { randomUUID } from 'crypto';
+import { UUID, randomUUID } from 'crypto';
 import { Document } from 'mongoose';
 
 @Schema()
@@ -17,8 +17,8 @@ export class Commerce {
   @Prop({default: "Spain"})
   country: string;
 
-  @Prop({ required: true, unique: true, default: randomUUID() })
-  identificador: string;
+  @Prop()
+  identificador: string
 }
 
 export type CommerceDocument = Commerce & Document;

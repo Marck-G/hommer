@@ -38,3 +38,8 @@ export class UpdateCommerceDto {
     @IsOptional()
     identificador: string;
 }
+
+export class SearchCommerceDto {
+    @IsString()
+    nombre: string;
+  }

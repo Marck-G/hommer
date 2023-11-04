@@ -14,8 +14,38 @@ export class PricesService {
     return newPrice.save();
   }
 
-  async findAll() {
-    return this.priceModel.find().exec();
+  async findAllWithPagination(skip: number, limit: number): Promise<[Price[], number]> {
+    const commerces = await this.priceModel.find()
+        .skip(skip)
+        .limit(limit)
+        .exec();
+
+    const total = await this.priceModel.countDocuments().exec();
+
+    return [commerces, total];
+}
+
+  async getPriceForProduct(productId: string){
+    const lowestPrice = await this.priceModel.find({producto: productId})
+    .sort({precio: 1})
+    .limit(1)
+    .exec();
+    if (lowestPrice && lowestPrice.length > 0) {
+      return lowestPrice[0].precio;
+    } else {
+      return null; // No se encontraron precios para el producto
+    }
+  }
+
+  async getPricesForProduct(productId: string){
+    const lowestPrice = await this.priceModel.find({producto: productId})
+    .sort({fecha: 1})
+    .exec();
+    if (lowestPrice && lowestPrice.length > 0) {
+      return lowestPrice;
+    } else {
+      return null; // No se encontraron precios para el producto
+    }
   }
 
   async findOne(id: string) {

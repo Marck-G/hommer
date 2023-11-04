@@ -22,6 +22,9 @@ export class Product {
 
   @Prop()
   volume: number;
+
+  @Prop()
+  units: number;
 }
 
 export type ProductDocument = Product & Document;

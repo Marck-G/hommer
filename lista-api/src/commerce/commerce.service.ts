@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Commerce, CommerceDocument } from './commerce.model';
-import { CreateCommerceDto, UpdateCommerceDto } from './commerce.dto';
+import { CreateCommerceDto, SearchCommerceDto, UpdateCommerceDto } from './commerce.dto';
 
 @Injectable()
 export class CommerceService {
@@ -19,6 +19,15 @@ export class CommerceService {
 
         return [commerces, total];
     }
+
+    async findByName(searchDto: SearchCommerceDto) {
+        const { nombre } = searchDto;
+        const regex = new RegExp(nombre, 'i'); // Búsqueda insensible a mayúsculas y minúsculas
+    
+        const matchingCommerces = await this.commerceModel.find({ nombre: regex }).exec();
+    
+        return matchingCommerces;
+      }
 
     async create(createCommerceDto: CreateCommerceDto) {
         const newCommerce = new this.commerceModel(createCommerceDto);

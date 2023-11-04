@@ -6,7 +6,7 @@ export class CreateProductDto {
 
   @IsString()
   @IsOptional()
-  descripcion: string;
+  descripción: string;
 
   @IsOptional()
   @IsString()
@@ -23,6 +23,10 @@ export class CreateProductDto {
   @IsOptional()
   @IsNumber()
   volume: number;
+
+  @IsOptional()
+  @IsNumber()
+  units: number;
 }
 
 export class UpdateProductDto {
@@ -32,7 +36,7 @@ export class UpdateProductDto {
 
   @IsString()
   @IsOptional()
-  descripcion: string;
+  descripción: string;
 
   @IsString()
   @IsOptional()
@@ -49,4 +53,8 @@ export class UpdateProductDto {
   @IsOptional()
   @IsNumber()
   volume: number;
+
+  @IsOptional()
+  @IsNumber()
+  units: number;
 }
